@@ -12,8 +12,14 @@ public class Disk {
         this.tower = tower;
     }
 
+    public int getSize() {
+        return size;
+    }
+
     @Override
     public boolean equals(Object obj) {
         return obj instanceof Disk && ((Disk) obj).size == this.size;
     }
+
+
 }

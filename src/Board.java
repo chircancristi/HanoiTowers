@@ -1,8 +1,10 @@
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class Board {
     public List <Tower> towers = new ArrayList <>();
+    public List <Disk> disks = new ArrayList <>();
     public int towerNumber;
     public int diskNumber;
     public Disk lastMovedDisk = null;
@@ -13,6 +15,11 @@ public class Board {
         for (Tower tower : board.towers) {
             this.towers.add(new Tower(tower));
         }
+
+        for (Disk disk : board.disks) {
+            this.disks.add(new Disk(disk));
+        }
+
         this.towerNumber = board.towerNumber;
         this.diskNumber = board.diskNumber;
         this.lastMovedDisk = board.lastMovedDisk;
@@ -30,9 +37,11 @@ public class Board {
             this.towers.add(new Tower(i));
         }
         for (i = 0; i < diskNumber; i++) {
-            this.towers.get(0).disks.push(new Disk(diskNumber - i - 1, this.towers.get(0)));
+            Disk disk = new Disk(diskNumber - i - 1, this.towers.get(0));
+            this.towers.get(0).disks.push(disk);
+            this.disks.add(disk);
         }
-
+        this.disks.sort(Comparator.comparing(Disk::getSize));
     }
 
     public boolean canItBeMoved(Disk disk) {
@@ -48,7 +57,10 @@ public class Board {
         StringBuilder alphacode = new StringBuilder();
 
         for (int i = 0; i < this.diskNumber; i++) {
-            alphacode.append(this.getTowerByDiskSize(i).index + 'a');
+            Tower tower = this.getTowerByDiskSize(i);
+
+            if (tower != null)
+                alphacode.append(tower.index + 'a');
         }
 
         return alphacode.toString();
@@ -61,5 +73,10 @@ public class Board {
                     return tower;
             }
         }
+        return null;
+    }
+
+    public List<Board> generateAllBoardFutureStatesOneDiskMoved() {
+
     }
 }

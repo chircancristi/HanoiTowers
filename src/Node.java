@@ -18,7 +18,8 @@ public class Node {
     }
 
     private List<Node> generateChildren() {
-        List<Node> childrens = new ArrayList <Node>();
+        List<Node> childrens = new ArrayList <>();
+
 
         return childrens;
     }
@@ -27,5 +28,35 @@ public class Node {
         List<Node> brothers = new ArrayList <Node>();
 
         return brothers;
+    }
+
+    public boolean isFinal() {
+        char firstChr = this.aphacode.charAt(0);
+
+        if (firstChr == 'a')
+            return false;
+
+        for (char chr : this.aphacode.toCharArray()) {
+            if (chr != firstChr)
+                return false;
+        }
+
+        return true;
+    }
+
+    public Node getFather() {
+        return father;
+    }
+
+    public List <Node> getChildren() {
+        return children;
+    }
+
+    public List <Node> getBothers() {
+        return bothers;
+    }
+
+    public Board getBoard() {
+        return board;
     }
 }
