@@ -29,6 +29,16 @@ class Player {
         }
         return false;
     }
+    public boolean checkIfDone(Board board){
+        boolean check=false;
+        for (Tower tower : board.towers) {
+            if (tower.checkTower(board.diskNumber)) {
+                if (tower.index == 0) board.lastMovedDisk = null;
+                else check = true;
+            }
+    }
+        return check;
+    }
     public void uniformCost(){
 
     }
@@ -73,13 +83,8 @@ class Player {
                 checkBoard.lastMovedDisk.tower = randomToMoveTower;
                 System.out.println("At step " + steps + " disk " + checkBoard.lastMovedDisk.size + " was moved from tower" + randomTower.index + " to tower" + randomToMoveTower.index);
 
-                Boolean check = false;
-                for (Tower tower : checkBoard.towers) {
-                    if (tower.checkTower(checkBoard.diskNumber)) {
-                        if (tower.index == 0) checkBoard.lastMovedDisk = null;
-                        else check = true;
-                    }
-                }
+                Boolean check = this.checkIfDone(checkBoard);
+
                 if (check) {
                     break;
                 }
