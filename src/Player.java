@@ -4,9 +4,11 @@ import java.util.Random;
 
 class Player {
     private List <Board> boards = new ArrayList <>();
+    private Graph graph;
 
     Player(int towers, int disks) throws Exception {
         boards.add(new Board(towers, disks));
+        this.graph = new Graph(towers, disks);
     }
 
     private boolean checkBoards(Board checkedBoard) {
@@ -28,17 +30,19 @@ class Player {
         }
         return false;
     }
-    private boolean checkIfDone(Board board){
-        boolean check=false;
+
+    private boolean checkIfDone(Board board) {
+        boolean check = false;
         for (Tower tower : board.towers) {
             if (tower.checkTower(board.diskNumber)) {
                 if (tower.index == 0) board.lastMovedDisk = null;
                 else check = true;
             }
-    }
+        }
         return check;
     }
-    public void uniformCost(){
+
+    public void uniformCost() {
 
     }
 
