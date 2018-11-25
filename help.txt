@@ -24,4 +24,7 @@ functie turnuriDinHanoi(discuri-3,turnuri-5)
         
     
     2   4 
-    3 1 5 
+    3 1 5
+
+    fiecare nod are cost
+    cost = nivel
