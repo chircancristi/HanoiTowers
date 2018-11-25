@@ -44,5 +44,22 @@ public class Board {
         return false;
     }
 
+    public String toAlphacode() {
+        StringBuilder alphacode = new StringBuilder();
 
+        for (int i = 0; i < this.diskNumber; i++) {
+            alphacode.append(this.getTowerByDiskSize(i).index + 'a');
+        }
+
+        return alphacode.toString();
+    }
+
+    private Tower getTowerByDiskSize(int size){
+        for (Tower tower : this.towers){
+            for (Disk disk : tower.disks) {
+                if (disk.size == size)
+                    return tower;
+            }
+        }
+    }
 }
