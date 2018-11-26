@@ -21,10 +21,6 @@ public class Node implements Serializable {
         this.cost = new HashMap <>();
     }
 
-    public Node() {
-
-    }
-
     @Override
     public boolean equals(Object obj) {
         return obj instanceof Node && ((Node) obj).aphacode.equals(this.aphacode);
@@ -110,4 +106,5 @@ public class Node implements Serializable {
     public String toString() {
         return this.board.toAlphacode();
     }
+    public String getAphacode(){return this.aphacode;}
 }
