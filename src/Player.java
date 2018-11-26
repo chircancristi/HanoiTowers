@@ -48,6 +48,7 @@ class Player {
         uniformCost.printPath();
         return result;
     }
+
     public  boolean DFS (Node currentNode, int depth)
     {
         if (currentNode.isFinal())
