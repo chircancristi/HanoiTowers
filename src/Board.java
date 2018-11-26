@@ -1,10 +1,9 @@
+import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
-public class Board {
+public class Board implements Serializable{
     public List <Tower> towers = new ArrayList <>();
-    public List <Disk> disks = new ArrayList <>();
     public int towerNumber;
     public int diskNumber;
     public Disk lastMovedDisk = null;
@@ -14,10 +13,6 @@ public class Board {
 
         for (Tower tower : board.towers) {
             this.towers.add(new Tower(tower));
-        }
-
-        for (Disk disk : board.disks) {
-            this.disks.add(new Disk(disk));
         }
 
         this.towerNumber = board.towerNumber;
@@ -39,9 +34,7 @@ public class Board {
         for (i = 0; i < diskNumber; i++) {
             Disk disk = new Disk(diskNumber - i - 1, this.towers.get(0));
             this.towers.get(0).disks.push(disk);
-            this.disks.add(disk);
         }
-        this.disks.sort(Comparator.comparing(Disk::getSize));
     }
 
     public boolean canItBeMoved(Disk disk) {
@@ -53,6 +46,19 @@ public class Board {
         return false;
     }
 
+    public List <Tower> whereCanDiskBeMoved(Disk disk) {
+        if (disk == null){
+            return null;
+        }
+        List<Tower> possibleTowers = new ArrayList <>();
+        for (Tower tower : this.towers) {
+            if (!tower.equals(disk.tower) && tower.canReceiveDisk(disk)) {
+                possibleTowers.add(tower);
+            }
+        }
+        return possibleTowers;
+    }
+
     public String toAlphacode() {
         StringBuilder alphacode = new StringBuilder();
 
@@ -60,7 +66,7 @@ public class Board {
             Tower tower = this.getTowerByDiskSize(i);
 
             if (tower != null)
-                alphacode.append(tower.index + 'a');
+                alphacode.append((char)(tower.index + 97));
         }
 
         return alphacode.toString();
@@ -77,6 +83,38 @@ public class Board {
     }
 
     public List<Board> generateAllBoardFutureStatesOneDiskMoved() {
-        return null;
+        List<Board> possibleBoards = new ArrayList <>();
+        List<Tower> possibleTowers;
+        Disk pieceThatWasMoved;
+        int currentTowerIndex;
+        int toMoveTowerIndex;
+
+        for ( Tower tower : this.towers) {
+
+            if (tower.disks.size() == 0)
+                continue;
+
+           /* if (tower.disks.peek().equals(this.lastMovedDisk))
+                continue;*/
+
+            possibleTowers = whereCanDiskBeMoved(tower.disks.peek());
+
+            if (possibleTowers != null){
+                currentTowerIndex = tower.index;
+                for (Tower toMoveTower : possibleTowers) {
+                    toMoveTowerIndex = toMoveTower.index;
+
+                    possibleBoards.add(new Board(this));
+                    Board newBoard = possibleBoards.get(possibleBoards.size() - 1);
+                    pieceThatWasMoved = newBoard.towers.get(currentTowerIndex).disks.pop();
+                    newBoard.towers.get(toMoveTowerIndex).disks.push(pieceThatWasMoved);
+                    newBoard.lastMovedDisk = pieceThatWasMoved;
+                    //System.out.println(newBoard.toAlphacode());
+                }
+
+            }
+        }
+
+        return possibleBoards;
     }
 }

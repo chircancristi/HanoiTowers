@@ -116,6 +116,10 @@ class Player {
         }
         System.out.println("Job done");
     }
+
+    public Graph getGraph() {
+        return graph;
+    }
 }
 
 

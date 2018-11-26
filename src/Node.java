@@ -1,33 +1,74 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.io.Serializable;
+import java.util.*;
 
-public class Node {
+public class Node implements Serializable {
     private String aphacode;
     private Node father;
-    private List<Node> children;
-    private List<Node> bothers;
+    private List <Node> childrens;
+    private List <Node> brothers;
+    public Map <Node, Integer> cost;
     private Board board;
+    private Graph graph;
 
-    public Node(String aphacode , Node father, Board board) {
+    public Node(String aphacode, Node father, Board board, Graph graph) {
         this.aphacode = aphacode;
         this.father = father;
-
-        this.children = this.generateChildren();
-        this.bothers = this.generateBrothers();
         this.board = board;
+        this.graph = graph;
+
+        this.brothers = new ArrayList <>();
+        this.childrens = new ArrayList <>();
+        this.cost = new HashMap <>();
     }
 
-    private List<Node> generateChildren() {
-        List<Node> childrens = new ArrayList <>();
-
-
-        return childrens;
+    @Override
+    public boolean equals(Object obj) {
+        return obj instanceof Node && ((Node) obj).aphacode.equals(this.aphacode);
     }
 
-    private List<Node> generateBrothers() {
-        List<Node> brothers = new ArrayList <Node>();
+    public void generateChildren(List <Node> fifo) {
+        if (this.isFinal())
+            return;
 
-        return brothers;
+        List <Board> possibleBoards = this.board.generateAllBoardFutureStatesOneDiskMoved();
+        for (Board board : possibleBoards) {
+            if (!this.graph.hasNode(board.toAlphacode())) {
+                this.graph.createdNodes.add(board.toAlphacode());
+                this.childrens.add(new Node(board.toAlphacode(), this, board, this.graph));
+            } else {
+                for (Node posibleBrother : fifo) {
+                    if (posibleBrother.aphacode.equals(board.toAlphacode())) {
+                        this.brothers.add(posibleBrother);
+                        posibleBrother.brothers.add(this);
+                    }
+                }
+            }
+        }
+        this.generateCosts();
+    }
+
+    private void generateCosts() {
+        Random rand = new Random();
+        if (this.father != null) {
+            Integer fathersCost = this.father.cost.get(this);
+            this.cost.put(this.father, fathersCost);
+        }
+
+        if (this.brothers.size() > 0) {
+            for (Node bro : this.brothers) {
+                if (bro.cost.containsKey(this)) {
+                    this.cost.put(bro, bro.cost.get(this));
+                } else {
+                    this.cost.put(bro, rand.nextInt(100) + 1);
+                }
+            }
+        }
+
+        if (this.childrens.size() > 0) {
+            for (Node child : this.childrens) {
+                this.cost.put(child, rand.nextInt(100) + 1);
+            }
+        }
     }
 
     public boolean isFinal() {
@@ -49,14 +90,20 @@ public class Node {
     }
 
     public List <Node> getChildren() {
-        return children;
+
+        return childrens;
     }
 
-    public List <Node> getBothers() {
-        return bothers;
+    public List <Node> getbrothers() {
+        return brothers;
     }
 
     public Board getBoard() {
         return board;
+    }
+
+    @Override
+    public String toString() {
+        return this.board.toAlphacode();
     }
 }
