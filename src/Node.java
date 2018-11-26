@@ -59,14 +59,14 @@ public class Node implements Serializable {
                 if (bro.cost.containsKey(this)) {
                     this.cost.put(bro, bro.cost.get(this));
                 } else {
-                    this.cost.put(bro, rand.nextInt(100) + 1);
+                    this.cost.put(bro, rand.nextInt(20000) + 1);
                 }
             }
         }
 
         if (this.childrens.size() > 0) {
             for (Node child : this.childrens) {
-                this.cost.put(child, rand.nextInt(100) + 1);
+                this.cost.put(child, rand.nextInt(20000) + 1);
             }
         }
     }
