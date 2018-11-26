@@ -21,10 +21,6 @@ public class Node implements Serializable {
         this.cost = new HashMap <>();
     }
 
-    public Node() {
-
-    }
-
     @Override
     public boolean equals(Object obj) {
         return obj instanceof Node && ((Node) obj).aphacode.equals(this.aphacode);
@@ -63,14 +59,14 @@ public class Node implements Serializable {
                 if (bro.cost.containsKey(this)) {
                     this.cost.put(bro, bro.cost.get(this));
                 } else {
-                    this.cost.put(bro, rand.nextInt(100) + 1);
+                    this.cost.put(bro, rand.nextInt(20000) + 1);
                 }
             }
         }
 
         if (this.childrens.size() > 0) {
             for (Node child : this.childrens) {
-                this.cost.put(child, rand.nextInt(100) + 1);
+                this.cost.put(child, rand.nextInt(20000) + 1);
             }
         }
     }
@@ -110,4 +106,5 @@ public class Node implements Serializable {
     public String toString() {
         return this.board.toAlphacode();
     }
+    public String getAphacode(){return this.aphacode;}
 }

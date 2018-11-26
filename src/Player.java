@@ -42,8 +42,11 @@ class Player {
         return check;
     }
 
-    public void uniformCost() {
-
+    public int uniformCost() {
+        UniformCost uniformCost=new UniformCost(this.graph.createdNodes.size(),this.graph);
+        int result=uniformCost.uniformCostSearch();
+        uniformCost.printPath();
+        return result;
     }
 
     public  boolean DFS (Node currentNode, int depth)
