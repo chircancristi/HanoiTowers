@@ -21,6 +21,10 @@ public class Node implements Serializable {
         this.cost = new HashMap <>();
     }
 
+    public Node() {
+
+    }
+
     @Override
     public boolean equals(Object obj) {
         return obj instanceof Node && ((Node) obj).aphacode.equals(this.aphacode);
