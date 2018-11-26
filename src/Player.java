@@ -45,9 +45,26 @@ class Player {
     public void uniformCost() {
 
     }
+    public  boolean DFS (Node currentNode, int depth)
+    {
+        if (currentNode.isFinal())
+            return  true;
+        if (depth==0)
+            return false;
+        for (Node child: currentNode.getChildren()){
+            if (DFS(child,depth-1))
+                return true;
+        }
+        return  false;
+    }
 
-    public void IDS() {
-
+    public int IDS() {
+        for (int depth=1;depth<=20;depth++)
+        {
+            if (DFS(graph.getRoot(),depth))
+                    return depth;
+        }
+        return -1;
     }
 
     public void hillClimbing() {

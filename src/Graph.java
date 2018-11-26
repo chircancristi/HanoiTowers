@@ -14,4 +14,8 @@ public class Graph {
 
         return node;
     }
+
+    public Node getRoot() {
+        return root;
+    }
 }

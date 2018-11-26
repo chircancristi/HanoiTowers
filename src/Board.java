@@ -77,6 +77,6 @@ public class Board {
     }
 
     public List<Board> generateAllBoardFutureStatesOneDiskMoved() {
-
+        return null;
     }
 }
