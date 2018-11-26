@@ -96,4 +96,7 @@ public class Graph implements Serializable{
         return false;
     }
 
+    public Node getRoot() {
+        return this.root;
+    }
 }
