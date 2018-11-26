@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.util.Stack;
 
-public class Tower {
+public class Tower implements Serializable{
     public int index;
     public Stack <Disk> disks;
 

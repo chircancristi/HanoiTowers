@@ -1,4 +1,6 @@
-public class Disk {
+import java.io.Serializable;
+
+public class Disk implements Serializable{
     public int size;
     public Tower tower;
 
