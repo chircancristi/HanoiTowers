@@ -1,6 +1,8 @@
 import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +13,8 @@ public class Graph implements Serializable{
     private String absPath = (new File("").getAbsolutePath());
 
     Graph(int towersNo, int disksNo) throws Exception {
+        this.emptyTrash();
+
         this.createdNodes = new ArrayList <>();
         this.nodesFifo = new ArrayList <>();
 
@@ -37,18 +41,23 @@ public class Graph implements Serializable{
                 this.nodesFifo.remove(0);
             }
 
+            String filePathString = this.absPath + "\\GeneratedGraphs\\test\\" + towersNo + '_' + disksNo + ".txt";
+            File file = new File(filePathString);
+            boolean fileWasCreated = true;
             try {
                 this.storeGraph(towersNo, disksNo);
             } catch (java.lang.StackOverflowError e){
-                String filePathString = this.absPath + "\\GeneratedGraphs\\" + towersNo + '_' + disksNo + ".txt";
-                File file = new File(filePathString);
+                System.out.println("Graph too big to be serialized!");
+                fileWasCreated = false;
                 file.deleteOnExit();
             }
+            if (fileWasCreated)
+                Files.move(Paths.get(filePathString), Paths.get(this.absPath + "\\GeneratedGraphs\\" + towersNo + '_' + disksNo + ".txt"));
         }
     }
 
     private void storeGraph(int towersNo, int disksNo) throws IOException {
-        String filePathString = this.absPath + "\\GeneratedGraphs\\" + towersNo + '_' + disksNo + ".txt";
+        String filePathString = this.absPath + "\\GeneratedGraphs\\test\\" + towersNo + '_' + disksNo + ".txt";
 
         FileOutputStream fos = new FileOutputStream(filePathString);
         ObjectOutputStream oos = new ObjectOutputStream(fos);
@@ -98,5 +107,12 @@ public class Graph implements Serializable{
 
     public Node getRoot() {
         return this.root;
+    }
+
+    public void emptyTrash() {
+        File recicleBin = new File(this.absPath + "\\GeneratedGraphs\\test\\");
+        for (File file : recicleBin.listFiles()) {
+            file.delete();
+        }
     }
 }
