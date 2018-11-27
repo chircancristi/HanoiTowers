@@ -82,7 +82,7 @@ public class Node implements Serializable {
             this.heuristic=lastTowerDiskOverFlow;
             for (char tower:mapDisks.keySet()){
                     if(mapNumberofDisks.get(tower)>=2)
-                        this.heuristic=this.heuristic+(mapDisks.get(tower)+mapNumberofDisks.get(tower))*5;
+                        this.heuristic=this.heuristic+(mapDisks.get(tower)+(alphaCode.length()-mapNumberofDisks.get(tower)))*5;
                     else this.heuristic=this.heuristic+mapDisks.get(tower)*5;
             }
 
