@@ -101,7 +101,7 @@ public class Node implements Serializable {
             }
             for (char tower:mapDisks.keySet()){
                 if (tower=='a'){
-                    this.heuristic=this.heuristic+mapDisks.get(tower)*5;
+                    this.heuristic=this.heuristic+mapDisks.get(tower)*5+mapNumberofDisks.get(tower);
                 }
                 else {
                     if (mapNumberofDisks.get(tower)>=2){

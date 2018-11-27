@@ -7,7 +7,7 @@ public class Main {
 
        Player player=new Player(3,4);
        System.out.println("NEVER SAY NEVER");
-       player.DFS(player.getGraph().getRoot(),20);
+       player.getGraph().showGraph();
 
     }
 }
