@@ -51,6 +51,7 @@ class Player {
 
     public  boolean DFS (Node currentNode, int depth)
     {
+        System.out.println(currentNode.getAphacode()+"-->"+currentNode.getHeuristic());
         if (currentNode.isFinal())
             return  true;
         if (depth==0)
@@ -59,6 +60,7 @@ class Player {
             if (DFS(child,depth-1))
                 return true;
         }
+
         return  false;
     }
 

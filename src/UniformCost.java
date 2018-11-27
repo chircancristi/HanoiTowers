@@ -57,6 +57,10 @@ public class UniformCost {
             }
             priorityQueue.add(childen);
         }
+        if (parent.getbrothers().size()>=3){
+            System.out.println("2 FRATII");
+        }
+
         for (Node brother :parent.getbrothers()){
             if (!settled.contains(brother)) {
                 if (distances.get(brother.getAphacode())>parent.cost.get(brother)+distances.get(parent.getAphacode())) {
