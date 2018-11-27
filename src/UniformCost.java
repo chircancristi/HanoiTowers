@@ -27,11 +27,14 @@ public class UniformCost {
         {
             distances.put(graph.createdNodes.get(i),999999999);
         }
+
         priorityQueue.add(graph.getRoot());
         distances.put(graph.getRoot().getAphacode(),0);
         while (!priorityQueue.isEmpty()){
             evaluationNode=priorityQueue.get(0);
-            priorityQueue.remove(0);
+            for (int i=0;i<priorityQueue.size();i++)
+                if (priorityQueue.get(i).getAphacode().compareTo(evaluationNode.getAphacode())==0)
+                    priorityQueue.remove(i);
             if (evaluationNode.isFinal()){
                 this.finalNode=evaluationNode;
                 return distances.get(evaluationNode.getAphacode());
@@ -53,6 +56,19 @@ public class UniformCost {
                 priorityQueue.remove(childen);
             }
             priorityQueue.add(childen);
+        }
+        for (Node brother :parent.getbrothers()){
+            if (!settled.contains(brother)) {
+                if (distances.get(brother.getAphacode())>parent.cost.get(brother)+distances.get(parent.getAphacode())) {
+                    distances.put(brother.getAphacode(),parent.cost.get(brother)+distances.get(parent.getAphacode()));
+                    this.parent.put(brother,parent);
+                }
+                if (priorityQueue.contains(brother)){
+                    priorityQueue.remove(brother);
+                }
+                priorityQueue.add(brother);
+            }
+
         }
         this.sortPriority();
     }
