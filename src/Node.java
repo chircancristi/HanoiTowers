@@ -82,15 +82,15 @@ public class Node implements Serializable {
             this.heuristic=lastTowerDiskOverFlow;
             for (char tower:mapDisks.keySet()){
                     if(mapNumberofDisks.get(tower)>=2)
-                        this.heuristic=this.heuristic+(mapDisks.get(tower)+mapNumberofDisks.get(tower))*5;
+                        this.heuristic=this.heuristic+(mapDisks.get(tower)+alphaCode.length()-mapNumberofDisks.get(tower))*5;
                     else this.heuristic=this.heuristic+mapDisks.get(tower)*5;
             }
 
 
         }
         else {
-
-            for (int i=0;i<alphaCode.length();i++)
+            this.heuristic=alphaCode.length()*10;
+            for (int i=0;i<alphaCode.length()-1;i++)
             {
                 if (mapNumberofDisks.get(alphaCode.charAt(i))!=0)
                         auxValue=mapDisks.get(alphaCode.charAt(i))+i+1;
@@ -101,10 +101,15 @@ public class Node implements Serializable {
             }
             for (char tower:mapDisks.keySet()){
                 if (tower=='a'){
-                    this.heuristic=this.heuristic+mapDisks.get(tower)*10+mapNumberofDisks.get(tower);
+                    this.heuristic=this.heuristic+mapDisks.get(tower)*5+mapNumberofDisks.get(tower);
                 }
-                else{
-                    this.heuristic=this.heuristic+(mapDisks.get(tower)+(alphaCode.length()-mapNumberofDisks.get(tower)))*5;
+                else {
+                    if (mapNumberofDisks.get(tower)>=2){
+                        this.heuristic = this.heuristic + ((mapDisks.get(tower)) * 5 -mapNumberofDisks.get(tower));
+                    }
+                    else{
+                        this.heuristic = this.heuristic + (mapDisks.get(tower)) * 5;
+                    }
                 }
             }
 

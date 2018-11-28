@@ -115,4 +115,17 @@ public class Graph implements Serializable{
             file.delete();
         }
     }
+    public void showGraph(){
+        List<Node> nod=new ArrayList<>();
+        nod.add(getRoot());
+        System.out.println("Radacina "+nod.get(0).getAphacode()+"are valoarea "+nod.get(0).getHeuristic());
+        while (!nod.isEmpty()){
+            if (nod.get(0).getAphacode().compareTo(getRoot().getAphacode())!=0)
+                System.out.println("Nodul "+nod.get(0).getAphacode()+" are valoarea "+nod.get(0).getHeuristic()+" este copilul lui "+nod.get(0).getFather().getAphacode());
+            for (Node children:nod.get(0).getChildren()){
+                nod.add(children);
+            }
+            nod.remove(0);
+        }
+    }
 }
