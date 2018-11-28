@@ -5,7 +5,8 @@ public class Result {
     public int noOfParsedStates;
     public long timeStarted;
     public long timeEnded;
-    public long timeNeeded;
+    public float timeNeeded;
+
 
     public Result() {
         this.solutionLength = 0;
@@ -15,24 +16,10 @@ public class Result {
 
     public void stopTimer() {
         this.timeEnded = System.currentTimeMillis();
-
+        System.out.println("A inceput la "+ this.timeStarted + "s-a terminat la " + this.timeEnded);
         this.timeNeeded = this.timeEnded - this.timeStarted;
+        System.out.println("Calcul final este "+this.timeNeeded);
     }
 
-    public String getDurationString() {
-        StringBuilder time = new StringBuilder("It took ");
 
-        Time timeInHMS = new Time(this.timeNeeded);
-        timeInHMS.setHours( timeInHMS.getHours() - 2);
-
-        if (timeInHMS.getHours() != 0)
-            time.append(timeInHMS.getHours() + " hours");
-
-        if (timeInHMS.getMinutes() != 0)
-            time.append(timeInHMS.getMinutes() + " minutes");
-
-        time.append(timeInHMS.getSeconds() + " seconds");
-
-        return time.toString();
-    }
 }

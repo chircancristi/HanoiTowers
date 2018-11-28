@@ -27,7 +27,7 @@ public class UniformCost {
     }
     public void uniformCostSearch(){
         Node evaluationNode;
-        for (int i = 1; i < numberOfNodes; i++)
+        for (int i = 0; i < numberOfNodes; i++)
         {
             distances.put(graph.createdNodes.get(i),999999999);
         }
@@ -42,6 +42,7 @@ public class UniformCost {
                     priorityQueue.remove(i);
             if (evaluationNode.isFinal()){
                 this.finalNode=evaluationNode;
+                break;
             }
             settled.add(evaluationNode);
             addChildenToQueue(evaluationNode);
@@ -65,6 +66,7 @@ public class UniformCost {
 
 
         for (Node brother :parent.getbrothers()){
+
             if (!settled.contains(brother)) {
                 if (distances.get(brother.getAphacode())>parent.cost.get(brother)+distances.get(parent.getAphacode())) {
                     distances.put(brother.getAphacode(),parent.cost.get(brother)+distances.get(parent.getAphacode()));
@@ -75,7 +77,6 @@ public class UniformCost {
                 }
                 priorityQueue.add(brother);
             }
-
         }
         this.sortPriority();
     }

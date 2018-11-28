@@ -67,9 +67,11 @@ class Player {
         return alg.result;
     }
 
-    public void randomOptimized() throws Exception {
+    public Result randomOptimized() throws Exception {
+        Result result=new Result();
         int steps = 0;
         while (true) {
+
             Random rand = new Random();
             Board checkBoard = new Board(this.boards.get(this.boards.size() - 1));
 
@@ -77,6 +79,7 @@ class Player {
             Tower randomTower = checkBoard.towers.get(randomTowerIndex);
 
             while (randomTower.disks.size() == 0 || randomTower.disks.peek().equals(checkBoard.lastMovedDisk) || !checkBoard.canItBeMoved(randomTower.disks.peek())) {
+                result.noOfParsedStates=result.noOfParsedStates+1;
                 randomTowerIndex = rand.nextInt(checkBoard.towerNumber);
                 randomTower = checkBoard.towers.get(randomTowerIndex);
             }
@@ -85,28 +88,34 @@ class Player {
             Tower randomToMoveTower = checkBoard.towers.get(randomToMoveTowerIndex);
 
             while (randomToMoveTowerIndex == randomTowerIndex || !randomToMoveTower.canReceiveDisk(randomTower.disks.peek())) {
+                result.noOfParsedStates=result.noOfParsedStates+1;
                 randomToMoveTowerIndex = rand.nextInt(checkBoard.towerNumber);
                 randomToMoveTower = checkBoard.towers.get(randomToMoveTowerIndex);
             }
 
             randomToMoveTower.disks.push(randomTower.disks.pop());
+
             if (!this.checkBoards(checkBoard)) {
                 randomTower.disks.push(randomToMoveTower.disks.pop());
             } else {
+                result.solutionLength+=1;
                 steps++;
                 checkBoard.lastMovedDisk = randomToMoveTower.disks.peek();
                 checkBoard.lastMovedDisk.tower = randomToMoveTower;
-                System.out.println("At step " + steps + " disk " + checkBoard.lastMovedDisk.size + " was moved from tower" + randomTower.index + " to tower" + randomToMoveTower.index);
 
                 Boolean check = this.checkIfDone(checkBoard);
 
                 if (check) {
                     break;
                 }
+                if (result.solutionLength==10000){
+                    result.solutionLength=-1;
+                }
                 this.boards.add(checkBoard);
             }
         }
-        System.out.println("Job done");
+        result.stopTimer();
+        return result;
     }
 
     public Graph getGraph() {

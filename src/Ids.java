@@ -23,11 +23,11 @@ public class Ids {
         while(true)
             {
                 if (DFS(root,depth)){
-                    result.solutionLength=depth;
+                    this.result.solutionLength=depth;
                     break;
                 }
                 depth=depth+1;
             }
-        result.stopTimer();
+        this.result.stopTimer();
     }
 }
