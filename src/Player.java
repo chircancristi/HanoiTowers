@@ -42,39 +42,25 @@ class Player {
         return check;
     }
 
-    public int uniformCost() {
+    public Result uniformCost() {
         UniformCost uniformCost=new UniformCost(this.graph.createdNodes.size(),this.graph);
-        int result=uniformCost.uniformCostSearch();
-        uniformCost.printPath();
-        return result;
+        uniformCost.uniformCostSearch();
+        uniformCost.result.solutionLength=uniformCost.printPath();
+        return uniformCost.result;
     }
 
-    public  boolean DFS (Node currentNode, int depth)
-    {
-        System.out.println(currentNode.getAphacode()+"-->"+currentNode.getHeuristic());
-        if (currentNode.isFinal())
-            return  true;
-        if (depth==0)
-            return false;
-        for (Node child: currentNode.getChildren()){
-            if (DFS(child,depth-1))
-                return true;
-        }
 
-        return  false;
+
+    public Result IDS() {
+       Ids ids=new Ids();
+       ids.IDS(this.graph.getRoot());
+       return ids.result;
     }
 
-    public int IDS() {
-        for (int depth=1;depth<=20;depth++)
-        {
-            if (DFS(graph.getRoot(),depth))
-                    return depth;
-        }
-        return -1;
-    }
-
-    public void hillClimbing() {
-
+    public Result hillClimbing() {
+        HillClimbing hillClimbing=new HillClimbing();
+        hillClimbing.hillClimbingSearch(this.graph.getRoot());
+        return hillClimbing.getResult();
     }
 
     public void aStar() {

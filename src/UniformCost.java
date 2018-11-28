@@ -5,10 +5,13 @@ public class UniformCost {
     private Set<Node> settled;
     private Map <String,Integer> distances;
     private int numberOfNodes;
-    private int adjacencyMatrix[][];
+
     private LinkedList<Node> path;
     private Map<Node,Node> parent;
     private Node finalNode;
+
+    Result result;
+
     Graph graph;
 
     public UniformCost(int numberOfNodes,Graph graph)
@@ -20,8 +23,9 @@ public class UniformCost {
         this.path = new LinkedList<>();
         this.parent = new HashMap<>();
         this.graph=graph;
+        this.result=new Result();
     }
-    public int uniformCostSearch(){
+    public void uniformCostSearch(){
         Node evaluationNode;
         for (int i = 1; i < numberOfNodes; i++)
         {
@@ -31,18 +35,19 @@ public class UniformCost {
         priorityQueue.add(graph.getRoot());
         distances.put(graph.getRoot().getAphacode(),0);
         while (!priorityQueue.isEmpty()){
+            result.noOfParsedStates+=1;
             evaluationNode=priorityQueue.get(0);
             for (int i=0;i<priorityQueue.size();i++)
                 if (priorityQueue.get(i).getAphacode().compareTo(evaluationNode.getAphacode())==0)
                     priorityQueue.remove(i);
             if (evaluationNode.isFinal()){
                 this.finalNode=evaluationNode;
-                return distances.get(evaluationNode.getAphacode());
             }
             settled.add(evaluationNode);
             addChildenToQueue(evaluationNode);
         }
-        return 0;
+        result.stopTimer();
+
     }
     public void addChildenToQueue(Node parent){
         for (Node childen :parent.getChildren()){
@@ -57,9 +62,7 @@ public class UniformCost {
             }
             priorityQueue.add(childen);
         }
-        if (parent.getbrothers().size()>=3){
-            System.out.println("2 FRATII");
-        }
+
 
         for (Node brother :parent.getbrothers()){
             if (!settled.contains(brother)) {
@@ -96,7 +99,7 @@ public class UniformCost {
             }
         }
     }
-    public void printPath(){
+    public int printPath(){
         path.add(this.finalNode);
         boolean found = false;
         Node vertex=this.finalNode;
@@ -110,13 +113,14 @@ public class UniformCost {
             path.add(parent.get(vertex));
             vertex = parent.get(vertex);
         }
-
+        return path.size();
+        /*
         System.out.println("The Path is ");
         Iterator<Node> iterator = path.descendingIterator();
         while (iterator.hasNext())
         {
             System.out.print(iterator.next() + "\t");
         }
-        System.out.println();
+        System.out.println();*/
     }
 }
