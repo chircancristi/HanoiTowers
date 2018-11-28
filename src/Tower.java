@@ -30,4 +30,9 @@ public class Tower implements Serializable{
     public boolean equals(Object obj) {
         return obj instanceof Tower && ((Tower) obj).index == this.index;
     }
+
+    @Override
+    public String toString() {
+        return String.valueOf(this.index);
+    }
 }
