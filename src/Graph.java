@@ -1,5 +1,3 @@
-import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
-
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -27,7 +25,6 @@ public class Graph implements Serializable{
             this.nodesFifo.add(this.root);
 
             while (this.nodesFifo.size() > 0) {
-                System.out.println(this.nodesFifo);
                 this.nodesFifo.get(0).generateChildren(this.nodesFifo);
 
                 if (this.nodesFifo.get(0).getChildren().size() == 0) {

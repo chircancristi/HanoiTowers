@@ -179,5 +179,6 @@ public class Node implements Serializable {
     public String toString() {
         return this.board.toAlphacode();
     }
+
     public String getAphacode(){return this.aphacode;}
 }
