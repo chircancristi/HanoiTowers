@@ -4,10 +4,10 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Graph implements Serializable{
+public class Graph implements Serializable {
     private Node root;
-    public List<String> createdNodes;
-    public List<Node> nodesFifo;
+    public List <String> createdNodes;
+    public List <Node> nodesFifo;
     private String absPath = (new File("").getAbsolutePath());
 
     Graph(int towersNo, int disksNo) throws Exception {
@@ -16,7 +16,7 @@ public class Graph implements Serializable{
         this.createdNodes = new ArrayList <>();
         this.nodesFifo = new ArrayList <>();
 
-        if (this.graphPreviouslyGenerated(towersNo, disksNo)){
+        if (this.graphPreviouslyGenerated(towersNo, disksNo)) {
             this.loadGraph(towersNo, disksNo);
         } else {
 
@@ -43,7 +43,7 @@ public class Graph implements Serializable{
             boolean fileWasCreated = true;
             try {
                 this.storeGraph(towersNo, disksNo);
-            } catch (java.lang.StackOverflowError e){
+            } catch (java.lang.StackOverflowError e) {
                 System.out.println("Graph too big to be serialized!");
                 fileWasCreated = false;
                 file.deleteOnExit();
@@ -78,7 +78,7 @@ public class Graph implements Serializable{
     private boolean graphPreviouslyGenerated(int towersNo, int disksNo) {
         String filePathString = this.absPath + "\\GeneratedGraphs\\" + towersNo + '_' + disksNo + ".txt";
         File f = new File(filePathString);
-        if(f.exists() && !f.isDirectory()) {
+        if (f.exists() && !f.isDirectory()) {
             return true;
         }
         return false;
@@ -90,7 +90,7 @@ public class Graph implements Serializable{
             rootAlhacode.append('a');
 
         this.createdNodes.add(rootAlhacode.toString());
-        Node node = new Node(rootAlhacode.toString(), null, new Board(towersNo,diskNo), this);
+        Node node = new Node(rootAlhacode.toString(), null, new Board(towersNo, diskNo), this);
 
         return node;
     }
@@ -112,14 +112,15 @@ public class Graph implements Serializable{
             file.delete();
         }
     }
-    public void showGraph(){
-        List<Node> nod=new ArrayList<>();
+
+    public void showGraph() {
+        List <Node> nod = new ArrayList <>();
         nod.add(getRoot());
-        System.out.println("Radacina "+nod.get(0).getAphacode()+"are valoarea "+nod.get(0).getHeuristic());
-        while (!nod.isEmpty()){
-            if (nod.get(0).getAphacode().compareTo(getRoot().getAphacode())!=0)
-                System.out.println("Nodul "+nod.get(0).getAphacode()+" are valoarea "+nod.get(0).getHeuristic()+" este copilul lui "+nod.get(0).getFather().getAphacode());
-            for (Node children:nod.get(0).getChildren()){
+        System.out.println("Radacina " + nod.get(0).getAphacode() + "are valoarea " + nod.get(0).getHeuristic());
+        while (!nod.isEmpty()) {
+            if (nod.get(0).getAphacode().compareTo(getRoot().getAphacode()) != 0)
+                System.out.println("Nodul " + nod.get(0).getAphacode() + " are valoarea " + nod.get(0).getHeuristic() + " este copilul lui " + nod.get(0).getFather().getAphacode());
+            for (Node children : nod.get(0).getChildren()) {
                 nod.add(children);
             }
             nod.remove(0);

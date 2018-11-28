@@ -9,7 +9,7 @@ public class Node implements Serializable {
     public Map <Node, Integer> cost;
     private Board board;
     private Graph graph;
-    private Integer heuristic=0;
+    private Integer heuristic = 0;
 
     public Node(String aphacode, Node father, Board board, Graph graph) {
         this.aphacode = aphacode;
@@ -20,7 +20,7 @@ public class Node implements Serializable {
         this.brothers = new ArrayList <>();
         this.childrens = new ArrayList <>();
         this.cost = new HashMap <>();
-
+        this.generateHeurestic();
     }
 
     @Override
@@ -47,67 +47,61 @@ public class Node implements Serializable {
             }
         }
         this.generateCosts();
-        this.generateHeurestic();
     }
 
     private void generateHeurestic() {
-        String alphaCode=this.aphacode;
-        Map<Character,Integer> mapDisks= new HashMap<>();
-        Map<Character,Integer> mapNumberofDisks= new HashMap<>();
+        String alphaCode = this.aphacode;
+        Map <Character, Integer> mapDisks = new HashMap <>();
+        Map <Character, Integer> mapNumberofDisks = new HashMap <>();
 
-        int auxValue=0;
-        for (int i=0;i<alphaCode.length();i++) {
-            mapNumberofDisks.put(alphaCode.charAt(i),0);
+        int auxValue = 0;
+        for (int i = 0; i < alphaCode.length(); i++) {
+            mapNumberofDisks.put(alphaCode.charAt(i), 0);
 
         }
-        if (alphaCode.charAt(alphaCode.length()-1)!='a'){
-            boolean ok=true;
-            int lastTowerDiskOverFlow=0;
-            for (int i=alphaCode.length()-2;i>=0;i--){
-                if (alphaCode.charAt(i)!= alphaCode.charAt(alphaCode.length()-1) ){
-                    ok=false;
-                    if (mapNumberofDisks.get(alphaCode.charAt(i))!=0)
-                        auxValue=mapDisks.get(alphaCode.charAt(i))+i+1;
-                    else auxValue=i+1;
-                    mapDisks.put(alphaCode.charAt(i),auxValue);
-                    auxValue=mapNumberofDisks.get(alphaCode.charAt(i))+1;
-                    mapNumberofDisks.put(alphaCode.charAt(i),auxValue);
-                }
-                else {
-                    if (ok==false){
-                        lastTowerDiskOverFlow=lastTowerDiskOverFlow+(alphaCode.length()-(i+1))*5;
+        if (alphaCode.charAt(alphaCode.length() - 1) != 'a') {
+            boolean ok = true;
+            int lastTowerDiskOverFlow = 0;
+            for (int i = alphaCode.length() - 2; i >= 0; i--) {
+                if (alphaCode.charAt(i) != alphaCode.charAt(alphaCode.length() - 1)) {
+                    ok = false;
+                    if (mapNumberofDisks.get(alphaCode.charAt(i)) != 0)
+                        auxValue = mapDisks.get(alphaCode.charAt(i)) + i + 1;
+                    else auxValue = i + 1;
+                    mapDisks.put(alphaCode.charAt(i), auxValue);
+                    auxValue = mapNumberofDisks.get(alphaCode.charAt(i)) + 1;
+                    mapNumberofDisks.put(alphaCode.charAt(i), auxValue);
+                } else {
+                    if (ok == false) {
+                        lastTowerDiskOverFlow = lastTowerDiskOverFlow + (alphaCode.length() - (i + 1)) * 5;
                     }
                 }
             }
-            this.heuristic=lastTowerDiskOverFlow;
-            for (char tower:mapDisks.keySet()){
-                    if(mapNumberofDisks.get(tower)>=2)
-                        this.heuristic=this.heuristic+(mapDisks.get(tower)+alphaCode.length()-mapNumberofDisks.get(tower))*5;
-                    else this.heuristic=this.heuristic+mapDisks.get(tower)*5;
+            this.heuristic = lastTowerDiskOverFlow;
+            for (char tower : mapDisks.keySet()) {
+                if (mapNumberofDisks.get(tower) >= 2)
+                    this.heuristic = this.heuristic + (mapDisks.get(tower) + alphaCode.length() - mapNumberofDisks.get(tower)) * 5;
+                else this.heuristic = this.heuristic + mapDisks.get(tower) * 5;
             }
 
 
-        }
-        else {
-            this.heuristic=alphaCode.length()*10;
-            for (int i=0;i<alphaCode.length()-1;i++)
-            {
-                if (mapNumberofDisks.get(alphaCode.charAt(i))!=0)
-                        auxValue=mapDisks.get(alphaCode.charAt(i))+i+1;
-                else auxValue=i+1;
-                mapDisks.put(alphaCode.charAt(i),auxValue);
-                auxValue=mapNumberofDisks.get(alphaCode.charAt(i))+1;
-                mapNumberofDisks.put(alphaCode.charAt(i),auxValue);
+        } else {
+            this.heuristic = alphaCode.length() * 10;
+            for (int i = 0; i < alphaCode.length() - 1; i++) {
+                if (mapNumberofDisks.get(alphaCode.charAt(i)) != 0)
+                    auxValue = mapDisks.get(alphaCode.charAt(i)) + i + 1;
+                else auxValue = i + 1;
+                mapDisks.put(alphaCode.charAt(i), auxValue);
+                auxValue = mapNumberofDisks.get(alphaCode.charAt(i)) + 1;
+                mapNumberofDisks.put(alphaCode.charAt(i), auxValue);
             }
-            for (char tower:mapDisks.keySet()){
-                if (tower=='a'){
-                    this.heuristic=this.heuristic+mapDisks.get(tower)*5+mapNumberofDisks.get(tower);
-                }
-                else {
-                    if (mapNumberofDisks.get(tower)>=2){
-                        this.heuristic = this.heuristic + ((mapDisks.get(tower)) * 5 -mapNumberofDisks.get(tower));
-                    }
-                    else{
+            for (char tower : mapDisks.keySet()) {
+                if (tower == 'a') {
+                    this.heuristic = this.heuristic + mapDisks.get(tower) * 5 + mapNumberofDisks.get(tower);
+                } else {
+                    if (mapNumberofDisks.get(tower) >= 2) {
+                        this.heuristic = this.heuristic + ((mapDisks.get(tower)) * 5 - mapNumberofDisks.get(tower));
+                    } else {
                         this.heuristic = this.heuristic + (mapDisks.get(tower)) * 5;
                     }
                 }
@@ -158,7 +152,8 @@ public class Node implements Serializable {
     public Node getFather() {
         return father;
     }
-    public int getHeuristic(){
+
+    public int getHeuristic() {
         return heuristic;
     }
 
@@ -180,5 +175,7 @@ public class Node implements Serializable {
         return this.board.toAlphacode();
     }
 
-    public String getAphacode(){return this.aphacode;}
+    public String getAphacode() {
+        return this.aphacode;
+    }
 }
