@@ -3,16 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="92114568-b9a2-4ba9-8242-b277abadb304" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/turnurileDinHanoi/Graph.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/turnurileDinHanoi/Graph.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/turnurileDinHanoi/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/turnurileDinHanoi/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/turnurileDinHanoi/Node.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/turnurileDinHanoi/Node.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/turnurileDinHanoi/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/turnurileDinHanoi/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/turnurileDinHanoi/UniformCost.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/turnurileDinHanoi/UniformCost.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Ids.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ids.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Result.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Result.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/UniformCost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UniformCost.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -22,7 +15,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/turnurileDinHanoi$Main.ic" NAME="Main Coverage Results" MODIFIED="1541434819584" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/turnurileDinHanoi$Main.ic" NAME="Main Coverage Results" MODIFIED="1543425025995" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
   <component name="FUSProjectUsageTrigger">
     <session id="-1828825477">
@@ -42,14 +35,14 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="gitignore" value="26" />
-          <entry key="java" value="12282" />
-          <entry key="txt" value="209" />
+          <entry key="java" value="12334" />
+          <entry key="txt" value="220" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="12282" />
-          <entry key="PLAIN_TEXT" value="235" />
+          <entry key="JAVA" value="12334" />
+          <entry key="PLAIN_TEXT" value="246" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -73,8 +66,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="17" column="36" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="36" />
+            <state relative-caret-position="1063">
+              <caret line="140" column="32" selection-start-line="140" selection-start-column="23" selection-end-line="140" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -82,20 +75,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Result.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="19" column="25" lean-forward="true" selection-start-line="19" selection-start-column="25" selection-end-line="19" selection-end-column="25" />
+            <state relative-caret-position="289">
+              <caret line="17" column="43" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="43" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/output.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1487">
-              <caret line="47" column="80" lean-forward="true" selection-start-line="47" selection-start-column="80" selection-end-line="47" selection-end-column="80" />
+            <state>
+              <caret lean-forward="true" />
             </state>
           </provider>
         </entry>
@@ -104,7 +97,7 @@
         <entry file="file://$PROJECT_DIR$/src/HillClimbing.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="181">
-              <caret line="75" column="46" lean-forward="true" selection-start-line="75" selection-start-column="46" selection-end-line="75" selection-end-column="46" />
+              <caret line="75" column="46" selection-start-line="75" selection-start-column="46" selection-end-line="75" selection-end-column="46" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -134,7 +127,7 @@
         <entry file="file://$PROJECT_DIR$/src/Ids.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="34">
-              <caret line="3" column="13" lean-forward="true" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+              <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
               <folding>
                 <element signature="e#47#48#0" expanded="true" />
                 <element signature="e#82#83#0" expanded="true" />
@@ -159,7 +152,7 @@
         <entry file="file://$PROJECT_DIR$/src/UniformCost.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="326">
-              <caret line="47" column="46" lean-forward="true" selection-start-line="47" selection-start-column="46" selection-end-line="47" selection-end-column="46" />
+              <caret line="47" column="46" selection-start-line="47" selection-start-column="46" selection-end-line="47" selection-end-column="46" />
             </state>
           </provider>
         </entry>
@@ -187,6 +180,7 @@
       <find>2 FRA</find>
       <find>2F</find>
       <find>print</find>
+      <find>resultIds</find>
     </findStrings>
     <replaceStrings>
       <replace>this.boards.get(this.boards.size()-1).</replace>
@@ -209,11 +203,11 @@
         <option value="$PROJECT_DIR$/src/HillClimbing.java" />
         <option value="$PROJECT_DIR$/src/Board.java" />
         <option value="$PROJECT_DIR$/src/UniformCost.java" />
-        <option value="$PROJECT_DIR$/output.txt" />
         <option value="$PROJECT_DIR$/src/Player.java" />
         <option value="$PROJECT_DIR$/src/Ids.java" />
-        <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/Result.java" />
+        <option value="$PROJECT_DIR$/output.txt" />
+        <option value="$PROJECT_DIR$/src/Main.java" />
       </list>
     </option>
   </component>
@@ -256,6 +250,12 @@
             <path>
               <item name="turnurileDinHanoi" type="b2602c69:ProjectViewProjectNode" />
               <item name="turnurileDinHanoi" type="462c0819:PsiDirectoryNode" />
+              <item name="GeneratedGraphs" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="turnurileDinHanoi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="turnurileDinHanoi" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -268,7 +268,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543424861245" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543426054814" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -400,7 +400,14 @@
       <option name="project" value="LOCAL" />
       <updated>1543418066151</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Statistics">
+      <created>1543424935096</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1543424935096</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -408,7 +415,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18993288" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -418,9 +424,9 @@
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49932885" weight="0.32907802" />
+      <window_info active="true" anchor="bottom" id="Find" order="1" sideWeight="0.49932885" visible="true" weight="0.32907802" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.51342285" weight="0.3248227" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.747651" visible="true" weight="0.4638298" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.747651" weight="0.4638298" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -487,7 +493,8 @@
     <MESSAGE value=" fixed more bugs" />
     <MESSAGE value="show graph function" />
     <MESSAGE value="Merge branch 'master' of https://github.com/chircancristi/HanoiTowers&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;out/production/turnurileDinHanoi/Graph.class&#10;#&#9;out/production/turnurileDinHanoi/Main.class&#10;#&#9;out/production/turnurileDinHanoi/Node.class&#10;#&#9;out/production/turnurileDinHanoi/Player.class&#10;#&#9;out/production/turnurileDinHanoi/UniformCost.class&#10;#&#9;src/Main.java" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'master' of https://github.com/chircancristi/HanoiTowers&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;out/production/turnurileDinHanoi/Graph.class&#10;#&#9;out/production/turnurileDinHanoi/Main.class&#10;#&#9;out/production/turnurileDinHanoi/Node.class&#10;#&#9;out/production/turnurileDinHanoi/Player.class&#10;#&#9;out/production/turnurileDinHanoi/UniformCost.class&#10;#&#9;src/Main.java" />
+    <MESSAGE value="Statistics" />
+    <option name="LAST_COMMIT_MESSAGE" value="Statistics" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -714,7 +721,7 @@
     <entry file="file://$PROJECT_DIR$/src/HillClimbing.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="181">
-          <caret line="75" column="46" lean-forward="true" selection-start-line="75" selection-start-column="46" selection-end-line="75" selection-end-column="46" />
+          <caret line="75" column="46" selection-start-line="75" selection-start-column="46" selection-end-line="75" selection-end-column="46" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -724,14 +731,7 @@
     <entry file="file://$PROJECT_DIR$/src/UniformCost.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="326">
-          <caret line="47" column="46" lean-forward="true" selection-start-line="47" selection-start-column="46" selection-end-line="47" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/output.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1487">
-          <caret line="47" column="80" lean-forward="true" selection-start-line="47" selection-start-column="80" selection-end-line="47" selection-end-column="80" />
+          <caret line="47" column="46" selection-start-line="47" selection-start-column="46" selection-end-line="47" selection-end-column="46" />
         </state>
       </provider>
     </entry>
@@ -755,20 +755,10 @@
     <entry file="file://$PROJECT_DIR$/src/Ids.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
-          <caret line="3" column="13" lean-forward="true" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+          <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
           <folding>
             <element signature="e#47#48#0" expanded="true" />
             <element signature="e#82#83#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="36" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -782,8 +772,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Result.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="19" column="25" lean-forward="true" selection-start-line="19" selection-start-column="25" selection-end-line="19" selection-end-column="25" />
+        <state relative-caret-position="289">
+          <caret line="17" column="43" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1063">
+          <caret line="140" column="32" selection-start-line="140" selection-start-column="23" selection-end-line="140" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/output.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret lean-forward="true" />
         </state>
       </provider>
     </entry>
