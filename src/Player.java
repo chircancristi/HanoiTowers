@@ -78,7 +78,10 @@ class Player {
     }
 
     public void aStar() {
+        Result result = new Result();
 
+        result.stopTimer();
+        System.out.println(result.getDurationString());
     }
 
     public void randomOptimized() throws Exception {

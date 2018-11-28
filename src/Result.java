@@ -13,16 +13,17 @@ public class Result {
         this.timeStarted = System.currentTimeMillis();
     }
 
-    public void stopTimer(){
+    public void stopTimer() {
         this.timeEnded = System.currentTimeMillis();
 
         this.timeNeeded = this.timeEnded - this.timeStarted;
     }
 
-    public String getDurationString(){
+    public String getDurationString() {
         StringBuilder time = new StringBuilder("It took ");
 
         Time timeInHMS = new Time(this.timeNeeded);
+        timeInHMS.setHours( timeInHMS.getHours() - 2);
 
         if (timeInHMS.getHours() != 0)
             time.append(timeInHMS.getHours() + " hours");
@@ -30,8 +31,7 @@ public class Result {
         if (timeInHMS.getMinutes() != 0)
             time.append(timeInHMS.getMinutes() + " minutes");
 
-        if (timeInHMS.getSeconds() != 0)
-            time.append(timeInHMS.getSeconds() + " seconds");
+        time.append(timeInHMS.getSeconds() + " seconds");
 
         return time.toString();
     }
