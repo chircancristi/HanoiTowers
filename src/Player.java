@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 class Player {
     private List <Board> boards = new ArrayList <>();
@@ -77,11 +75,10 @@ class Player {
 
     }
 
-    public void aStar() {
-        Result result = new Result();
+    public Result aStar() {
+        AStar alg = new AStar(this.graph.getRoot());
 
-        result.stopTimer();
-        System.out.println(result.getDurationString());
+        return alg.result;
     }
 
     public void randomOptimized() throws Exception {

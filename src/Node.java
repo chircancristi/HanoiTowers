@@ -20,7 +20,7 @@ public class Node implements Serializable {
         this.brothers = new ArrayList <>();
         this.childrens = new ArrayList <>();
         this.cost = new HashMap <>();
-
+        this.generateHeurestic();
     }
 
     @Override
@@ -47,7 +47,6 @@ public class Node implements Serializable {
             }
         }
         this.generateCosts();
-        this.generateHeurestic();
     }
 
     private void generateHeurestic() {
@@ -124,14 +123,14 @@ public class Node implements Serializable {
                 if (bro.cost.containsKey(this)) {
                     this.cost.put(bro, bro.cost.get(this));
                 } else {
-                    this.cost.put(bro, rand.nextInt(20000) + 1);
+                    this.cost.put(bro, rand.nextInt(1000) + 1);
                 }
             }
         }
 
         if (this.childrens.size() > 0) {
             for (Node child : this.childrens) {
-                this.cost.put(child, rand.nextInt(20000) + 1);
+                this.cost.put(child, rand.nextInt(1000) + 1);
             }
         }
     }
